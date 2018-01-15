@@ -1,24 +1,20 @@
 package com.xyl.life.fragment;
 
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.jude.rollviewpager.RollPagerView;
 import com.xyl.life.R;
 import com.xyl.life.adapter.ImageLoopAdapter;
 import com.xyl.life.adapter.RecyclerViewAdapter;
-import com.xyl.life.entities.book.Book;
-import com.xyl.life.entities.book.BookItem;
+import com.xyl.life.entity.book.Book;
+import com.xyl.life.entity.book.BookItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,17 +59,14 @@ public class BookFragment extends BaseFragment {
     @Override
     protected void initView(LayoutInflater inflater, View view, Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.book_recommend).findViewById(R.id.recycler_list);
-        // recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        // recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));//滑动式图水平显示
 
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-
         list = new ArrayList<>();
-
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         adapter = new RecyclerViewAdapter(getContext(), list);
         recyclerView.setAdapter(adapter);
-
 
         mBookViewPager = (RollPagerView) view.findViewById(R.id.view_pager_bookFragment);
         mBookViewPager.setAdapter(new ImageLoopAdapter(mBookViewPager));
@@ -120,9 +113,7 @@ public class BookFragment extends BaseFragment {
             }
         });
 
-
     }
-
 
     @Override
     public void onResume() {

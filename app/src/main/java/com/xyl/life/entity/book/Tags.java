@@ -1,4 +1,4 @@
-package com.xyl.life.entities.book;
+package com.xyl.life.entity.book;
 
 /**
  * -------------------------

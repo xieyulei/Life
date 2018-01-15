@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //去除工具栏
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         initView();
         initListener();

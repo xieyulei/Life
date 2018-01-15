@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.xyl.life.R;
-import com.xyl.life.entities.book.BookItem;
+import com.xyl.life.entity.book.BookItem;
 
 import java.util.List;
 
@@ -31,8 +31,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public RecyclerViewAdapter(Context context,List<BookItem> list){
-        this.mContext=context;
+    public RecyclerViewAdapter(Context context, List<BookItem> list) {
+        this.mContext = context;
         this.mBookItemList = list;
     }
 
@@ -49,9 +49,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.mBookName.setText(item.getName());
         Glide.with(mContext).load(item.getIcon()).into(holder.mBookIcon);
     }
-
-
-
 
 
     @Override
