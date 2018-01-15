@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_book"
+        android:icon="@mipmap/book"
+        android:title="@string/nav_book_text" />
+
+    <item
+        android:id="@+id/nav_movie"
+        android:icon="@mipmap/movie"
+        android:title="@string/nav_movie_text" />
+
+    <item
+        android:id="@+id/nav_weather"
+        android:icon="@mipmap/weather"
+        android:title="@string/nav_weather_text" />
+
+</menu>

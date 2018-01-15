@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Life</string>
+    <string name="fragment_1">Book</string>
+    <string name="fragment_2">Movie</string>
+    <string name="fragment_3">Weather</string>
+
+    <string name="nav_book_text">Book</string>
+    <string name="nav_movie_text">Movie</string>
+    <string name="nav_weather_text">Weather</string>
+
+
+</resources>
