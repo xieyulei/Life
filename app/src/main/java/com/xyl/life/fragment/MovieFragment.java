@@ -101,8 +101,8 @@ public class MovieFragment extends BaseFragment implements SwipeRefreshLayoutEx.
     }
 
     private void getData() {
-        final ProgressDialog dialog = new ProgressDialog(getActivity());
-        dialog.show();
+//        final ProgressDialog dialog = new ProgressDialog(getActivity());
+//        dialog.show();
         movie.response(0, 10)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -123,14 +123,14 @@ public class MovieFragment extends BaseFragment implements SwipeRefreshLayoutEx.
                     @Override
                     public void onError(Throwable e) {
                         Log.e("onError", e.getMessage());
-                        dialog.dismiss();
+                      //  dialog.dismiss();
                         mRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onComplete() {
                         start += COUNT;
-                        dialog.dismiss();
+                     //   dialog.dismiss();
                     }
                 });
 

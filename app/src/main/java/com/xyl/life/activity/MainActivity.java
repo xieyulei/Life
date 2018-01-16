@@ -36,12 +36,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
         initListener();
 
     }
-
 
     /**
      * 初始化MainActivity页面控件
@@ -50,10 +48,6 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
-
-
-
-     //   mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
         mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
 
         bookFragment = new BookFragment();

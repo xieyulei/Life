@@ -1,14 +1,19 @@
 package com.xyl.life.fragment;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.xyl.life.R;
 import com.xyl.life.adapter.ImageLoopAdapter;
@@ -45,6 +50,14 @@ public class BookFragment extends BaseFragment {
             "https://api.douban.com/v2/book/isbn/9787115461230",
             "https://api.douban.com/v2/book/isbn/9787512393981"
     };
+
+    private String[] urls_native = {
+            "http://book.dangdang.com/20180110_jrkr",
+            "http://baby.dangdang.com/20180109_cyto",
+            "http://baby.dangdang.com/20180111_kjrw",
+            "http://book.dangdang.com/20180110_1pfu",
+            "http://baby.dangdang.com/20180109_cyto"
+    };
     private List<BookItem> list;
     private RecyclerViewAdapter adapter;
     private RollPagerView mBookViewPager;
@@ -71,6 +84,17 @@ public class BookFragment extends BaseFragment {
         mBookViewPager = (RollPagerView) view.findViewById(R.id.view_pager_bookFragment);
         mBookViewPager.setAdapter(new ImageLoopAdapter(mBookViewPager));
 
+        //ViewPager页面监听 使用add而不是set
+        mBookViewPager.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                int index = position;
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(urls_native[position]));
+                startActivity(intent);
+            }
+        });
+
         sendRequestWithOkHttp(recyclerView);
     }
 
@@ -89,7 +113,7 @@ public class BookFragment extends BaseFragment {
                     for (int i = 0; i < urls.length; i++) {
                         Request request = new Request.Builder().url(urls[i]).build();
                         Response response = client.newCall(request).execute();
-                        if (response.code()==200){
+                        if (response.code() == 200) {
                             String responseData = response.body().string();
                             parseJSONWithGSON(responseData, recyclerView);
                         }

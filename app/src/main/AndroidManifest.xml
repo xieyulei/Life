@@ -6,7 +6,7 @@
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/app_icon"
+        android:icon="@drawable/life"
         android:label="@string/app_name"
         android:roundIcon="@color/colorPrimaryDark"
         android:supportsRtl="true"
