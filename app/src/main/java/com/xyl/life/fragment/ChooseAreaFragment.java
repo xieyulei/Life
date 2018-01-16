@@ -71,8 +71,15 @@ public class ChooseAreaFragment extends Fragment {
 
     private Context context;
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     /**
      * 此方法在为碎片创建视图（加载碎片布局）时调用
+     *
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -113,36 +120,20 @@ public class ChooseAreaFragment extends Fragment {
                     queryCounties();
                 } else if (currentLevel == LEVEL_COUNTY) {
                     String weatherId = countyList.get(position).getWeatherId();
-                    if (getActivity() instanceof MainActivity) {
+                    if (getActivity() instanceof WeatherActivity) {
+                        WeatherActivity activity = (WeatherActivity) getActivity();
+                        activity.drawerLayout.closeDrawers();
+                        activity.swipeRefresh.setRefreshing(true);
+                        activity.requestWeather(weatherId);
+                    } else {
                         Intent intent = new Intent(getActivity(), WeatherActivity.class);
                         intent.putExtra("weather_id", weatherId);
                         startActivity(intent);
                         getActivity().finish();
-
-//                        FragmentManager fm=getActivity().getSupportFragmentManager();
-//                        //注意v4包的配套使用
-//                        Fragment fragment = new WeatherFragment();
-//                        fm.beginTransaction().replace(R.id.choose_area_fragment,fragment).commit();
-//                        getActivity().finish();
-                        //如果是用的v4的包，则用getActivity().getSuppoutFragmentManager();
-                        //  FragmentManager fm = getActivity().getFragmentManager();
-
-                       // Bundle bundle = new Bundle();
-//                        bundle.putExtra("weather_id", weatherId);
-//                        fm.addToBackStack(null);
-
-
                     }
                 }
             }
         });
-
-//                    else {
-//                        WeatherActivity activity= (WeatherActivity) getActivity();
-//                        activity.drawerLayout.closeDrawers();
-//                        activity.swipeRefresh.setRefreshing(true);
-//                        getcON.requestWeather(weatherId);
-
 
 
         backButton.setOnClickListener(new View.OnClickListener() {

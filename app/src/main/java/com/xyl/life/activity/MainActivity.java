@@ -19,7 +19,6 @@ import com.xyl.life.adapter.FragmentAdapter;
 import com.xyl.life.fragment.BookFragment;
 import com.xyl.life.fragment.ChooseAreaFragment;
 import com.xyl.life.fragment.MovieFragment;
-import com.xyl.life.fragment.WeatherFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BookFragment bookFragment;
     private MovieFragment movieFragment;
-    private WeatherFragment weatherFragment;
+    ChooseAreaFragment chooseAreaFragment;
 
 
     @Override
@@ -42,20 +41,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //去除工具栏
-//        getSupportActionBar().hide();
-
         initView();
         initListener();
-//
-//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//
-//        if (prefs.getString("weather", null) != null) {
-//            Intent intent = new Intent(this, WeatherActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-
 
     }
 
@@ -66,15 +53,6 @@ public class MainActivity extends AppCompatActivity {
     public void initView() {
         mNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
-//
-//        mFragmentAdapter = new FragmentAdapter(getChildFragmentManager());
-//
-////        mFragments.add( new BoonListFragment() );
-////
-////        mFragments.add( new BoonListFragment() );
-////
-////        mFragments.add( new BoonListFragment() );
-//        mViewPageAdpater.setFragments( mFragments, mTitles );
 
 
 
@@ -84,13 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
         bookFragment = new BookFragment();
         movieFragment = new MovieFragment();
-        weatherFragment = new WeatherFragment();
-        ChooseAreaFragment chooseAreaFragment=new ChooseAreaFragment();
+        chooseAreaFragment=new ChooseAreaFragment();
 
         //给FragmentList添加数据
         mFragmentList.add(bookFragment);
         mFragmentList.add(movieFragment);
-      //  mFragmentList.add(weatherFragment);
         mFragmentList.add(chooseAreaFragment);
 
     }
@@ -105,15 +81,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_book:
                         mViewPager.setCurrentItem(0, true);
-                        //  mViewPager.setCurrentItem(0);
+
                         break;
                     case R.id.nav_movie:
                         mViewPager.setCurrentItem(1, true);
-                        //   mViewPager.setCurrentItem(0);
+
                         break;
                     case R.id.nav_weather:
                         mViewPager.setCurrentItem(2, true);
-                        //  mViewPager.setCurrentItem(0);
+
                         break;
                 }
                 return true;

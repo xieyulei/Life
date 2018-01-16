@@ -89,8 +89,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             mRating=view.findViewById(R.id.rb_movie_rating);
             mRating.setNumStars(10);
             mAverage=view.findViewById(R.id.tv_movie_rating);
-
-
         }
     }
 }

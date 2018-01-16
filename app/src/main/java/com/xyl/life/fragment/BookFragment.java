@@ -59,12 +59,12 @@ public class BookFragment extends BaseFragment {
     @Override
     protected void initView(LayoutInflater inflater, View view, Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.book_recommend).findViewById(R.id.recycler_list);
-        // recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));//滑动式图水平显示
+
 
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         list = new ArrayList<>();
-//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+
         adapter = new RecyclerViewAdapter(getContext(), list);
         recyclerView.setAdapter(adapter);
 
@@ -89,8 +89,11 @@ public class BookFragment extends BaseFragment {
                     for (int i = 0; i < urls.length; i++) {
                         Request request = new Request.Builder().url(urls[i]).build();
                         Response response = client.newCall(request).execute();
-                        String responseData = response.body().string();
-                        parseJSONWithGSON(responseData, recyclerView);
+                        if (response.code()==200){
+                            String responseData = response.body().string();
+                            parseJSONWithGSON(responseData, recyclerView);
+                        }
+
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

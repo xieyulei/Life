@@ -77,7 +77,22 @@ public class MovieFragment extends BaseFragment implements SwipeRefreshLayoutEx.
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
 
-        getData();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+            //TODO now it's visible to user
+            getData();
+        }
     }
 
     @Override

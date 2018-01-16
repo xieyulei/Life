@@ -59,14 +59,15 @@ public class WeatherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weather);
         initView();//初始化控件
 
+       swipeRefresh.setRefreshing(false);
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String weatherString = prefs.getString("weather", null);
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //String weatherString = prefs.getString("weather", null);
 
         final String weatherId;
 
-        if (weatherString != null) {
+        /*if (weatherString != null) {
             //有缓存时，直接解析天气数据
             Weather weather = Utility.handleWeatherResponse(weatherString);
 
@@ -78,7 +79,11 @@ public class WeatherActivity extends AppCompatActivity {
             weatherId = getIntent().getStringExtra("weather_id");
             weatherLayout.setVisibility(View.INVISIBLE);//布局设置为不可见
             requestWeather(weatherId);
-        }
+        }*/
+
+        weatherId = getIntent().getStringExtra("weather_id");
+        weatherLayout.setVisibility(View.INVISIBLE);//布局设置为不可见
+        requestWeather(weatherId);
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -88,22 +93,15 @@ public class WeatherActivity extends AppCompatActivity {
         });
 
 
-        String bingPic = prefs.getString("bing_pic", null);
+        /*String bingPic = prefs.getString("bing_pic", null);
         if (bingPic != null) {
             Glide.with(this).load(bingPic).into(bingPicImg);
         } else {
             loadBingPic();
-        }
+        }*/
 
-//        /**
-//         * 添加按钮点击事件，切换抽屉栏目的状态
-//         */
-//        navButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                drawerLayout.openDrawer(GravityCompat.START);
-//            }
-//        });
+        loadBingPic();
+
 
     }
 

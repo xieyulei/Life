@@ -50,7 +50,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Glide.with(mContext).load(item.getIcon()).into(holder.mBookIcon);
     }
 
-
     @Override
     public int getItemCount() {
         return mBookItemList.size();
