@@ -1,19 +1,15 @@
-package com.xyl.life.fragment;
+package com.xyl.life.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.xyl.life.R;
 import com.xyl.life.entity.weather.Forecast;
 import com.xyl.life.entity.weather.Weather;
+import com.xyl.life.fragment.ChooseAreaFragment;
 import com.xyl.life.service.AutoUpdateService;
 import com.xyl.life.util.HttpUtil;
 import com.xyl.life.util.Utility;
@@ -35,16 +32,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-
-/**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/15.
- * ---------------------------
- * This class is used for:
- */
-
-public class WeatherFragment extends BaseFragment {
+public class WeatherActivity extends AppCompatActivity {
 
     private ScrollView weatherLayout;//天气页面布局
     private TextView titleCity;//页面标题-城市
@@ -59,53 +47,21 @@ public class WeatherFragment extends BaseFragment {
     private TextView sportText;//运动建议
     private ImageView bingPicImg;//必应每日一图
 
+    public SwipeRefreshLayout swipeRefresh; //外部嵌套布局，具有下拉刷新的功能
+
     public DrawerLayout drawerLayout;//抽屉栏
     private Button navButton;//用于切换抽屉栏的状态切换(打开和隐藏)
 
-    public SwipeRefreshLayout swipeRefresh; //外部嵌套布局，具有下拉刷新的功能
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    protected void initView(LayoutInflater inflater, View view, Bundle savedInstanceState) {
-        weatherLayout = (ScrollView) view.findViewById(R.id.weather_layout);
-        titleCity = (TextView) view.findViewById(R.id.title_city);
-        titleUpdateTime = (TextView) view.findViewById(R.id.title_update_time);
-
-        degreeText = (TextView) view.findViewById(R.id.degree_text);
-        weatherInfoText = (TextView) view.findViewById(R.id.weather_info_text);
-        forecastLayout = (LinearLayout) view.findViewById(R.id.forecast_layout);
-
-        aqiText = (TextView) view.findViewById(R.id.aqi_text);
-        pm25Text = (TextView) view.findViewById(R.id.pm25_text);
-
-        comfortText = (TextView) view.findViewById(R.id.comfort_text);
-        carWashText = (TextView) view.findViewById(R.id.car_wash_text);
-        sportText = (TextView) view.findViewById(R.id.sport_text);
-
-        bingPicImg = (ImageView) view.findViewById(R.id.bing_pic_img);
-
-        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
-
-        // drawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
-
-        navButton = (Button) view.findViewById(R.id.nav_button);
+        setContentView(R.layout.activity_weather);
+        initView();//初始化控件
 
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
 
-        navButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new ChooseAreaFragment());
-            }
-        });
-
-
-        //获取天气信息并解析数据
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString = prefs.getString("weather", null);
 
         final String weatherId;
@@ -119,7 +75,7 @@ public class WeatherFragment extends BaseFragment {
             showWeatherInfo(weather);
         } else {
             //无缓存时，去服务器查询天气
-            weatherId = getActivity().getIntent().getStringExtra("weather_id");
+            weatherId = getIntent().getStringExtra("weather_id");
             weatherLayout.setVisibility(View.INVISIBLE);//布局设置为不可见
             requestWeather(weatherId);
         }
@@ -138,18 +94,47 @@ public class WeatherFragment extends BaseFragment {
         } else {
             loadBingPic();
         }
+
+//        /**
+//         * 添加按钮点击事件，切换抽屉栏目的状态
+//         */
+//        navButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                drawerLayout.openDrawer(GravityCompat.START);
+//            }
+//        });
+
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getChildFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.choose_area_fragment, fragment);
-        transaction.commit();
-    }
+    /**
+     * 加载必应每日一图
+     */
+    private void loadBingPic() {
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_weather;
+        final String requestBingPic = "http://guolin.tech/api/bing_pic";
+        HttpUtil.sendOkHttpRequest(requestBingPic, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String bingPic = response.body().string();
+                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this).edit();
+                editor.putString("bing_pic", bingPic);
+                editor.apply();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Glide.with(WeatherActivity.this).load(bingPic).into(bingPicImg);
+                    }
+                });
+
+            }
+        });
+
     }
 
 
@@ -172,7 +157,7 @@ public class WeatherFragment extends BaseFragment {
         forecastLayout.removeAllViews();
 
         for (Forecast forecast : weather.forecastList) {
-            View view = LayoutInflater.from(getActivity()).inflate(R.layout.forecast_item, forecastLayout, false);
+            View view = LayoutInflater.from(this).inflate(R.layout.forecast_item, forecastLayout, false);
             TextView dateText = (TextView) view.findViewById(R.id.date_text);
             TextView infoText = (TextView) view.findViewById(R.id.info_text);
             TextView maxText = (TextView) view.findViewById(R.id.max_text);
@@ -191,6 +176,7 @@ public class WeatherFragment extends BaseFragment {
             pm25Text.setText(weather.aqi.city.pm25);
         }
 
+
         String comfort = "舒适度" + weather.suggestion.comfort.info;
         String carWash = "汽车指数" + weather.suggestion.carWash.info;
         String sport = "运动建议" + weather.suggestion.sport.info;
@@ -199,6 +185,7 @@ public class WeatherFragment extends BaseFragment {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+
     }
 
 
@@ -214,11 +201,10 @@ public class WeatherFragment extends BaseFragment {
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                getActivity().runOnUiThread(new Runnable() {
-
+                runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getActivity(), "获取天气信息失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WeatherActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
                         swipeRefresh.setRefreshing(false);//刷新后隐藏
                     }
                 });
@@ -228,20 +214,20 @@ public class WeatherFragment extends BaseFragment {
             public void onResponse(Call call, Response response) throws IOException {
                 final String responseText = response.body().string();
                 final Weather weather = Utility.handleWeatherResponse(responseText);
-                getActivity().runOnUiThread(new Runnable() {
+                runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         if (weather != null && "ok".equals(weather.status)) {
-                            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
+                            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this).edit();
                             editor.putString("weather", responseText);
                             editor.apply();
                             showWeatherInfo(weather);
 
                             //启动后台更新天气和背景图片的服务
-                            Intent intent = new Intent(getActivity(), AutoUpdateService.class);
-                            getActivity().startService(intent);
+                            Intent intent = new Intent(WeatherActivity.this, AutoUpdateService.class);
+                            startService(intent);
                         } else {
-                            Toast.makeText(getActivity(), "获取天气信息失败", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(WeatherActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
                         }
                         swipeRefresh.setRefreshing(false);//刷新后隐藏
                     }
@@ -251,35 +237,42 @@ public class WeatherFragment extends BaseFragment {
 
     }
 
+
     /**
-     * 加载必应每日一图
+     * 初始化控件
      */
-    private void loadBingPic() {
+    private void initView() {
+        weatherLayout = (ScrollView) findViewById(R.id.weather_layout);
+        titleCity = (TextView) findViewById(R.id.title_city);
+        titleUpdateTime = (TextView) findViewById(R.id.title_update_time);
 
-        final String requestBingPic = "http://guolin.tech/api/bing_pic";
-        HttpUtil.sendOkHttpRequest(requestBingPic, new Callback() {
+        degreeText = (TextView) findViewById(R.id.degree_text);
+        weatherInfoText = (TextView) findViewById(R.id.weather_info_text);
+        forecastLayout = (LinearLayout) findViewById(R.id.forecast_layout);
+
+        aqiText = (TextView) findViewById(R.id.aqi_text);
+        pm25Text = (TextView) findViewById(R.id.pm25_text);
+
+        comfortText = (TextView) findViewById(R.id.comfort_text);
+        carWashText = (TextView) findViewById(R.id.car_wash_text);
+        sportText = (TextView) findViewById(R.id.sport_text);
+
+        bingPicImg = (ImageView) findViewById(R.id.bing_pic_img);
+
+        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+
+        //drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        navButton = (Button) findViewById(R.id.nav_button);
+
+        navButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                final String bingPic = response.body().string();
-                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
-                editor.putString("bing_pic", bingPic);
-                editor.apply();
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Glide.with(getContext()).load(bingPic).into(bingPicImg);
-                    }
-                });
-
+            public void onClick(View view) {
+                Intent intent =new Intent(WeatherActivity.this, MainActivity.class);
+//               intent.putExtra("weather",1);
+                startActivity(intent);
+                finish();
             }
         });
-
     }
-
-
 }

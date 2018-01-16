@@ -1,6 +1,9 @@
 package com.xyl.life.activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -11,8 +14,10 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.xyl.life.R;
+
 import com.xyl.life.adapter.FragmentAdapter;
 import com.xyl.life.fragment.BookFragment;
+import com.xyl.life.fragment.ChooseAreaFragment;
 import com.xyl.life.fragment.MovieFragment;
 import com.xyl.life.fragment.WeatherFragment;
 
@@ -42,6 +47,16 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
         initListener();
+//
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+//
+//        if (prefs.getString("weather", null) != null) {
+//            Intent intent = new Intent(this, WeatherActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
+
+
     }
 
 
@@ -51,16 +66,32 @@ public class MainActivity extends AppCompatActivity {
     public void initView() {
         mNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
+//
+//        mFragmentAdapter = new FragmentAdapter(getChildFragmentManager());
+//
+////        mFragments.add( new BoonListFragment() );
+////
+////        mFragments.add( new BoonListFragment() );
+////
+////        mFragments.add( new BoonListFragment() );
+//        mViewPageAdpater.setFragments( mFragments, mTitles );
+
+
+
+
+     //   mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
         mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
 
         bookFragment = new BookFragment();
         movieFragment = new MovieFragment();
         weatherFragment = new WeatherFragment();
+        ChooseAreaFragment chooseAreaFragment=new ChooseAreaFragment();
 
         //给FragmentList添加数据
         mFragmentList.add(bookFragment);
         mFragmentList.add(movieFragment);
-        mFragmentList.add(weatherFragment);
+      //  mFragmentList.add(weatherFragment);
+        mFragmentList.add(chooseAreaFragment);
 
     }
 

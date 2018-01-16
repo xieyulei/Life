@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    tools:context=".activity.WeatherActivity">
 
     <ImageView
         android:id="@+id/bing_pic_img"
@@ -10,10 +12,10 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop" />
 
-    <!--<android.support.v4.widget.DrawerLayout-->
-        <!--android:id="@+id/drawer_layout"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <!--在scrollView外部嵌套一层SwipeRefreshLayout，使得ScrollView具有下拉刷新的功能-->
         <android.support.v4.widget.SwipeRefreshLayout
@@ -52,12 +54,13 @@
             </ScrollView>
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        DrawerLayout中的第一个控件用于作为主屏幕中显示的内容
-        第二个子控件用于作为滑动菜单中显示的内容，因此我们在这个位置添加了用于遍历省市县数据的碎片
+        <!--DrawerLayout中的第一个控件用于作为主屏幕中显示的内容-->
+        <!--第二个子控件用于作为滑动菜单中显示的内容，因此我们在这个位置添加了用于遍历省市县数据的碎片-->
         <fragment
             android:id="@+id/choose_area_fragment"
             android:name="com.xyl.life.fragment.ChooseAreaFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start" />
+    </android.support.v4.widget.DrawerLayout>
 </FrameLayout>
