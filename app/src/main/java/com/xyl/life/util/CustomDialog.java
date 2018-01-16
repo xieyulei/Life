@@ -1,4 +1,4 @@
-package com.xyl.life.fragment;
+package com.xyl.life.util;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -6,7 +6,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,8 +20,6 @@ import com.xyl.life.R;
 import com.xyl.life.db.City;
 import com.xyl.life.db.County;
 import com.xyl.life.db.Province;
-import com.xyl.life.util.HttpUtil;
-import com.xyl.life.util.Utility;
 
 import org.litepal.crud.DataSupport;
 
@@ -80,12 +81,22 @@ public class CustomDialog extends Dialog {
         init();
     }
 
-    private void init(){
-        setContentView(R.layout.choose_area);
+    private void init() {
+        setContentView(R.layout.dialog_choose_area);
 
         titleText = (TextView) findViewById(R.id.title_text);
         backButton = (Button) findViewById(R.id.back_button);
         listView = (ListView) findViewById(R.id.list_view);
+
+        //设置对话框大小
+        Window dialogWindow = getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        DisplayMetrics d = mContext.getResources().getDisplayMetrics();
+        //获取屏幕宽度、高度
+        lp.width = (int) (d.widthPixels * 0.7);
+        lp.height = (int) (d.heightPixels * 0.7);
+        dialogWindow.setAttributes(lp);
+
 
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, dataList);
         listView.setAdapter(adapter);
@@ -203,18 +214,11 @@ public class CustomDialog extends Dialog {
      * @param type
      */
     private void queryFromServer(String address, final String type) {
-        showProgressDialog();//显示进度对话框
+        //  showProgressDialog();//显示进度对话框
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                //通过runOnUiThread（）方法回到主线程处理逻辑
-                /*getOwnerActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        closeProgressDialog();
-                        Toast.makeText(getContext(), "加载失败", Toast.LENGTH_SHORT).show();
-                    }
-                });*/
+
             }
 
             @Override
@@ -231,10 +235,10 @@ public class CustomDialog extends Dialog {
 
                 if (result) {
 
-                    ((Activity)mContext).runOnUiThread(new Runnable() {
+                    ((Activity) mContext).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            closeProgressDialog();
+                            //closeProgressDialog();
                             if ("province".equals(type)) {
                                 queryProvinces();
                             } else if ("city".equals(type)) {
@@ -244,14 +248,6 @@ public class CustomDialog extends Dialog {
                             }
                         }
                     });
-
-                    /*if ("province".equals(type)) {
-                        queryProvinces();
-                    } else if ("city".equals(type)) {
-                        queryCities();
-                    } else if ("county".equals(type)) {
-                        queryCounties();
-                    }*/
                 }
             }
         });

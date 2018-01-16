@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BookFragment bookFragment;
     private MovieFragment movieFragment;
-    WeatherFragment chooseAreaFragment;
+    WeatherFragment weatherFragment;
 
 
     @Override
@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
 
         bookFragment = new BookFragment();
         movieFragment = new MovieFragment();
-        chooseAreaFragment=new WeatherFragment();
+        weatherFragment=new WeatherFragment();
 
         //给FragmentList添加数据
         mFragmentList.add(bookFragment);
         mFragmentList.add(movieFragment);
-        mFragmentList.add(chooseAreaFragment);
+        mFragmentList.add(weatherFragment);
 
     }
 

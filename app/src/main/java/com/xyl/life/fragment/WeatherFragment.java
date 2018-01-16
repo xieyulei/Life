@@ -20,6 +20,7 @@ import com.xyl.life.R;
 import com.xyl.life.entity.weather.Forecast;
 import com.xyl.life.entity.weather.Weather;
 import com.xyl.life.service.AutoUpdateService;
+import com.xyl.life.util.CustomDialog;
 import com.xyl.life.util.HttpUtil;
 import com.xyl.life.util.Utility;
 
@@ -54,7 +55,10 @@ public class WeatherFragment extends BaseFragment {
     public DrawerLayout drawerLayout;//抽屉栏
     private Button navButton;//用于切换抽屉栏的状态切换(打开和隐藏)
 
-    private static String defaultId = "CN101010400";
+    // private static String defaultId = "CN101010400";
+    private static String defaultId = "CN101280701";
+
+
     private String weatherId;
 
     @Override
@@ -112,16 +116,15 @@ public class WeatherFragment extends BaseFragment {
             //有缓存时，直接解析天气数据
             Weather weather = Utility.handleWeatherResponse(weatherString);
             if (weather != null)
-                weatherId=weather.basic.weatherId;
-                showWeatherInfo(weather);
+                weatherId = weather.basic.weatherId;
+            showWeatherInfo(weather);
 
         } else {
-            weatherId=defaultId;
+            weatherId = defaultId;
             //无缓存时，去服务器查询天气
             weatherLayout.setVisibility(View.INVISIBLE);//布局设置为不可见
             requestWeather(weatherId);
         }
-
 
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
