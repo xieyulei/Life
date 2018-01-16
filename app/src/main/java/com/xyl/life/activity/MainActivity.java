@@ -1,9 +1,6 @@
 package com.xyl.life.activity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -14,11 +11,10 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.xyl.life.R;
-
 import com.xyl.life.adapter.FragmentAdapter;
 import com.xyl.life.fragment.BookFragment;
-import com.xyl.life.fragment.ChooseAreaFragment;
 import com.xyl.life.fragment.MovieFragment;
+import com.xyl.life.fragment.WeatherFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BookFragment bookFragment;
     private MovieFragment movieFragment;
-    ChooseAreaFragment chooseAreaFragment;
+    WeatherFragment chooseAreaFragment;
 
 
     @Override
@@ -62,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         bookFragment = new BookFragment();
         movieFragment = new MovieFragment();
-        chooseAreaFragment=new ChooseAreaFragment();
+        chooseAreaFragment=new WeatherFragment();
 
         //给FragmentList添加数据
         mFragmentList.add(bookFragment);
