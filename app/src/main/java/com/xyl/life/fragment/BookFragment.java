@@ -55,7 +55,7 @@ public class BookFragment extends BaseFragment {
             "http://book.dangdang.com/20180110_1pfu",
             "http://baby.dangdang.com/20180109_cyto"
     };
-    private List<BookItem> list;
+    private List<Book> list;
     private RecyclerViewAdapter adapter;
     private RollPagerView mBookViewPager;
 
@@ -126,10 +126,9 @@ public class BookFragment extends BaseFragment {
 
     private void parseJSONWithGSON(String jsonData, View recyclerView) {
         Gson gson = new Gson();
-        Book book = gson.fromJson(jsonData, Book.class);
-
-        BookItem item = new BookItem(book.getTitle(), book.getImages().getSmall());
-        list.add(item);
+       Book book = gson.fromJson(jsonData, Book.class);
+        //BookItem item = new BookItem(book.getTitle(), book.getImages().getSmall());
+        list.add(book);
         recyclerView.post(new Runnable() {
             @Override
             public void run() {

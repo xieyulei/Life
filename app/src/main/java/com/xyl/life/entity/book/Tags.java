@@ -1,10 +1,12 @@
 package com.xyl.life.entity.book;
 
+import java.io.Serializable;
+
 /**
  * 实体类：图书标签
  */
 
-public class Tags {
+public class Tags implements Serializable{
     private int count;
     private String name;
 

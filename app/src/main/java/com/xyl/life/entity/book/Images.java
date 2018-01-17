@@ -1,10 +1,12 @@
 package com.xyl.life.entity.book;
 
+import java.io.Serializable;
+
 /**
  * 实体类：豆瓣书籍图片
  */
 
-public class Images {
+public class Images implements Serializable{
     private String small;
     private String large;
     private String medium;

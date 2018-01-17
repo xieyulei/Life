@@ -1,9 +1,11 @@
 package com.xyl.life.entity.book;
 
+import java.io.Serializable;
+
 /**
  * 实体类：豆瓣图书
  */
-public class Book {
+public class Book implements Serializable {
     private String id;//图书id
     private String isbn10;
     private String isbn13;
@@ -32,7 +34,7 @@ public class Book {
     //Series
     private String Series[];
     private String pages;
-    private String author_into;
+    private String author_intro;
     private String summary;
     private String catalog;
     private String ebook_url;
@@ -199,11 +201,11 @@ public class Book {
     }
 
     public String getAuthor_into() {
-        return author_into;
+        return author_intro;
     }
 
     public void setAuthor_into(String author_into) {
-        this.author_into = author_into;
+        this.author_intro = author_intro;
     }
 
     public String getSummary() {

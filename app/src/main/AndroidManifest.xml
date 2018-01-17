@@ -24,6 +24,7 @@
 
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.GuideActivity"/>
+        <activity android:name=".activity.BookInfoActivity"/>
 
         <service
             android:name=".service.AutoUpdateService"

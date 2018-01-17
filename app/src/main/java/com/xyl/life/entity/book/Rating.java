@@ -1,10 +1,12 @@
 package com.xyl.life.entity.book;
 
+import java.io.Serializable;
+
 /**
  * 实体类：豆瓣书籍评分
  */
 
-public class Rating {
+public class Rating implements Serializable {
     private int max;
     private int numRaters;
     private String average;

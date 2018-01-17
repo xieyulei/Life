@@ -9,6 +9,7 @@ public class BookItem {
     private String Name;
     private int mPrice;
     private float mScore;
+    private String isbn13;
     private static final String FREE = "Free";
 
     public BookItem(String name,String icon) {
