@@ -50,7 +50,6 @@ public class BookInfoActivity extends AppCompatActivity {
         initView();//初始化布局页面的控件`
     }
 
-
     private void initView() {
         mIvBook = (ImageView) findViewById(R.id.book_info_image);//图书图片
         mTvBookTitle = (TextView) findViewById(R.id.book_info_title);//图书名称
