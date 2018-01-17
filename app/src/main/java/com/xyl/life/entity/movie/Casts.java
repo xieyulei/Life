@@ -1,12 +1,7 @@
 package com.xyl.life.entity.movie;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/12.
- * ---------------------------
- * This class is used for:
- * 实体类--导演，包含四个属性：影人条目id，中文名，影人条目URL，影人头像
+ * 实体类：导演，包含四个属性：影人条目id，中文名，影人条目URL，影人头像
  */
 
 public class Casts {

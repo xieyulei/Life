@@ -1,16 +1,10 @@
 package com.xyl.life.entity.movie;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/12.
- * ---------------------------
- * This class is used for:
- * 实体类--电影海报图，分别提供大中小三个尺寸的海报
+ * 实体类：电影海报图，分别提供大中小三个尺寸的海报
  * 大：288px 乘以 465px
  * 中：96px 乘以 155px
  * 小：64px 乘以 103px
- *
  */
 
 public class Images {

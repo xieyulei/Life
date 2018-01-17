@@ -1,11 +1,7 @@
 package com.xyl.life.entity.book;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/15.
- * ---------------------------
- * This class is used for:
+ * 实体类：首页书籍信息展示
  */
 
 public class BookItem {

@@ -19,26 +19,24 @@ import com.xyl.life.fragment.WeatherFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * APP主页面
+ */
 public class MainActivity extends AppCompatActivity {
 
     private long exitTime = 0;
-    private BottomNavigationView mNavigationView;
-    private ViewPager mViewPager;
+    private BottomNavigationView mNavigationView;//底部导航
+    private ViewPager mViewPager;//首页中间的viewPager
     private FragmentPagerAdapter mFragmentAdapter;
-    private List<Fragment> mFragmentList = new ArrayList<Fragment>();
-
-    private BookFragment bookFragment;
-    private MovieFragment movieFragment;
-    WeatherFragment weatherFragment;
-
+    private List<Fragment> mFragmentList = new ArrayList<>();//声明存放fragment的集合
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
-        initListener();
-
+        initView();//控件初始化
+        initListener();//添加事件监听
     }
 
     /**
@@ -48,17 +46,16 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
-        mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
-
-        bookFragment = new BookFragment();
-        movieFragment = new MovieFragment();
-        weatherFragment=new WeatherFragment();
+        BookFragment bookFragment = new BookFragment();
+        MovieFragment movieFragment = new MovieFragment();
+        WeatherFragment weatherFragment = new WeatherFragment();
 
         //给FragmentList添加数据
         mFragmentList.add(bookFragment);
         mFragmentList.add(movieFragment);
         mFragmentList.add(weatherFragment);
 
+        mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
     }
 
     /**

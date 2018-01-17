@@ -11,11 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/*******************************
- * Created by liuqiang          *
- *******************************
- * data: 2017/12/26               *
- *******************************/
+/**
+ * 父fragment，用于被其他fragment继承
+ */
 
 public abstract class BaseFragment extends Fragment {
     private Activity mActivity;

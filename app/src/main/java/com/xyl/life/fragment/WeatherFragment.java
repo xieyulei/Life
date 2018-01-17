@@ -30,12 +30,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-/*******************************
- * Created by liuqiang          *
- *******************************
- * data: 2018/1/16               *
- *******************************/
-
+/**
+ * 用于显示天气的Fragment
+ */
 public class WeatherFragment extends BaseFragment {
     private ScrollView weatherLayout;//天气页面布局
     private TextView titleCity;//页面标题-城市

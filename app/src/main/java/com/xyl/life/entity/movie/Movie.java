@@ -1,12 +1,7 @@
 package com.xyl.life.entity.movie;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/12.
- * ---------------------------
- * This class is used for:
- * 实体类--定义从豆瓣api获取到Json文件相关参数的数据类型
+ * 实体类：定义从豆瓣api获取到Json文件相关参数的数据类型
  */
 
 public class Movie {

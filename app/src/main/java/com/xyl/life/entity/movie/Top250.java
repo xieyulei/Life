@@ -1,12 +1,8 @@
 package com.xyl.life.entity.movie;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/12.
- * ---------------------------
- * This class is used for:
- * 影片前250
+ *
+ * 实体类：影片Top250
  */
 
 public class Top250 {

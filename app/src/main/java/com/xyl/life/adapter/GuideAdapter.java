@@ -8,6 +8,10 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * APP引导页面适配器
+ */
+
 public class GuideAdapter extends PagerAdapter {
     private List<ImageView> mImageList=new ArrayList<>();
 
@@ -23,11 +27,6 @@ public class GuideAdapter extends PagerAdapter {
     public int getCount() {
         return mImageList.size();
     }
-
-//    @Override
-//    public boolean isViewFromObject(View view, Object object) {
-//        return false;
-//    }
 
     /**
      * 此方法用于判断是否是同一张图片，这里将两个参数比较返回即可
@@ -49,7 +48,6 @@ public class GuideAdapter extends PagerAdapter {
      */
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-       // super.destroyItem(container, position, object);
         container.removeView((View) object);
     }
 
@@ -65,8 +63,6 @@ public class GuideAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         // 将图片添加到ViewPager容器
         container.addView(mImageList.get(position));
-
         return mImageList.get(position);
-
     }
 }

@@ -32,11 +32,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/15.
- * ---------------------------
- * This class is used for:
+ * 用于显示电影的Fragment
  */
 
 public class MovieFragment extends BaseFragment implements SwipeRefreshLayoutEx.OnRefreshListener {

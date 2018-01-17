@@ -7,11 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/12.
- * ---------------------------
- * This class is used for:
+ * 定义豆瓣top250的接口
  */
 
 public interface Top250Movie {

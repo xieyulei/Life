@@ -31,11 +31,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-/*******************************
- * Created by liuqiang          *
- *******************************
- * data: 2018/1/16               *
- *******************************/
+/**
+ * 工具类：自定义对话框--用于选择城市，展示对应城市的天气信息
+ */
 
 public class CustomDialog extends Dialog {
 
@@ -278,6 +276,9 @@ public class CustomDialog extends Dialog {
 
     }
 
+    /**
+     * 添加回调监听，监听最后选择的 县 结果
+     */
     public interface OnSelectedListener {
         void onSelected(String id);
     }

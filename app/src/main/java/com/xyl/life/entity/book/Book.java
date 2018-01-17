@@ -1,13 +1,8 @@
 package com.xyl.life.entity.book;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/11.
- * ---------------------------
- * This class is used for:
+ * 实体类：豆瓣图书
  */
-
 public class Book {
     private String id;//图书id
     private String isbn10;

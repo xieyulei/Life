@@ -13,12 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/9.
- * ---------------------------
- * This class is used for:
- * 工具类，同来解析和处理网络请求的这种Json数据：分别为省级数据、市级数据、县级数据
+ * 工具类：同来解析和处理网络请求的这种Json数据：分别为省级数据、市级数据、县级数据
  */
 
 public class Utility {

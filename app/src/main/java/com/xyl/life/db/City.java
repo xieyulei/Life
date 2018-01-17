@@ -3,12 +3,7 @@ package com.xyl.life.db;
 import org.litepal.crud.DataSupport;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/9.
- * ---------------------------
- * This class is used for:
- * City实体类
+ * 实体类：City（城市）
  */
 
 public class City extends DataSupport{

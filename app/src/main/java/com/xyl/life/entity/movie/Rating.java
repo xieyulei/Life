@@ -1,11 +1,6 @@
 package com.xyl.life.entity.movie;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/12.
- * ---------------------------
- * This class is used for:
  * 实体类：影片评分：包含四个参数：最低、最高、平均、获得星级
  */
 

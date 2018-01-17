@@ -1,11 +1,9 @@
 package com.xyl.life.view;
 
-/*******************************
- * Created by liuqiang          *
- *******************************
- * data: 2018/1/11               *
- *******************************/
 
+/**
+ *
+ */
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;

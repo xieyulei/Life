@@ -1,11 +1,7 @@
 package com.xyl.life.entity.book;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/11.
- * ---------------------------
- * This class is used for:
+ * 实体类：图书标签
  */
 
 public class Tags {

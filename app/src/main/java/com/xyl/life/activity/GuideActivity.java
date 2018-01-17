@@ -21,53 +21,39 @@ import com.xyl.life.adapter.GuideAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- * Created by xieyulei on 2017/11/23.
+ * APP引导页
  */
 public class GuideActivity extends Activity implements View.OnClickListener {
 
-    private ViewPager mViewPager;
-    private Button mBtnSkip;
-    private Button mBtnDone;
-    private ImageButton mIbNext;
-    private LinearLayout mPointGroup;
-    private ImageView mWhitePoint;
-
-    //声明圆点之剑的间隔
-    private int mPointMargin;
-
-    public List<ImageView> mImageList =new ArrayList<>();
-    private int[] mIcons = {R.mipmap.guide1, R.mipmap.guide2, R.mipmap.guide3, R.mipmap.guide4};
-    private SharedPreferences mSp;
+    private ViewPager mViewPager;//引导页viewPager
+    private Button mBtnSkip;//引导页跳转到首页的按钮
+    private Button mBtnDone;//引导页面第四页，跳转到首页的按钮
+    private ImageButton mIbNext;//点击展示下一张引导页
+    private LinearLayout mPointGroup;//引导页底部圆点view组
+    private ImageView mWhitePoint;//引导页底部白点
+    private int mPointMargin;//引导页面底部圆点之剑的间隔
+    public List<ImageView> mImageList = new ArrayList<>();//声明一个图片集合
+    private int[] mIcons = {R.mipmap.guide1, R.mipmap.guide2, R.mipmap.guide3, R.mipmap.guide4};//声明一个数组，用于放置引导页要展示的图片
+    private SharedPreferences mSp;//设置偏好存储，用于存储参数
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide);
+        setContentView(R.layout.activity_guide);//在onCreate（）方法中引入引导页的布局文件
 
-    //    ActivityCollector.addActivity(this);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);//设置引导页面全屏显示
 
         mSp = getSharedPreferences("config", MODE_PRIVATE);
-        //初始化控件
-        mViewPager = (ViewPager) findViewById(R.id.splash_view_pager);
-        mBtnSkip = (Button) findViewById(R.id.button_skip);
-        mBtnDone = (Button) findViewById(R.id.button_done);
-        mIbNext = (ImageButton) findViewById(R.id.imageButton_next);
-        mPointGroup = (LinearLayout) findViewById(R.id.point_group);
-        mWhitePoint = (ImageView) findViewById(R.id.white_point);
 
-        mIbNext.setOnClickListener(this);
-        mBtnDone.setOnClickListener(this);
-        mBtnSkip.setOnClickListener(this);
+        initView();
 
         //准备要展示的图片集合
         mImageList = new ArrayList<>();
         for (int i = 0; i < mIcons.length; i++) {
             ImageView image = new ImageView(this);
             image.setBackgroundResource(mIcons[i]);
-
             mImageList.add(image);
 
             // 设置底部小圆点
@@ -104,8 +90,6 @@ public class GuideActivity extends Activity implements View.OnClickListener {
         /**
          * 为viewPager添加监听事件
          */
-
-
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -146,7 +130,28 @@ public class GuideActivity extends Activity implements View.OnClickListener {
 
     }
 
+    //初始化控件
+    private void initView() {
 
+        mViewPager = (ViewPager) findViewById(R.id.splash_view_pager);//控件-引导页viewPager
+        mBtnSkip = (Button) findViewById(R.id.button_skip);//引导页-跳过按钮
+        mBtnDone = (Button) findViewById(R.id.button_done);//引导页-进入按钮
+        mIbNext = (ImageButton) findViewById(R.id.imageButton_next);//引导页--下一个按钮
+        mPointGroup = (LinearLayout) findViewById(R.id.point_group);//圆点存放组
+        mWhitePoint = (ImageView) findViewById(R.id.white_point);//引导页底部--白色小圆点
+
+        mIbNext.setOnClickListener(this);
+        mBtnDone.setOnClickListener(this);
+        mBtnSkip.setOnClickListener(this);
+
+    }
+
+
+    /**
+     * 添加为引导页相关按钮控件添加事件监听，进行对应的页面跳转
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -172,10 +177,4 @@ public class GuideActivity extends Activity implements View.OnClickListener {
         finish();
     }
 
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        ActivityCollector.removeActivity(this);
-    }
 }

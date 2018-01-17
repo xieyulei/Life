@@ -27,12 +27,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 
-/*******************************
- * Created by liuqiang          *
- *******************************
- * data: 2018/1/11               *
- *******************************/
-
 class MaterialProgressDrawable extends Drawable implements Animatable {
 
     private static final Interpolator LINEAR_INTERPOLATOR = new LinearInterpolator();

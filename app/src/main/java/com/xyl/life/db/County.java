@@ -3,12 +3,7 @@ package com.xyl.life.db;
 import org.litepal.crud.DataSupport;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/9.
- * ---------------------------
- * This class is used for:
- * Country实体类
+ * 实体类：Country（县）
  */
 
 public class County extends DataSupport{

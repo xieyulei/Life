@@ -14,6 +14,11 @@ import com.xyl.life.entity.book.BookItem;
 
 import java.util.List;
 
+
+/**
+ * 首页书籍展示适配器
+ */
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private List<BookItem> mBookItemList;

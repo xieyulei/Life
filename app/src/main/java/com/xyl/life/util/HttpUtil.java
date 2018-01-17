@@ -4,15 +4,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/9.
- * ---------------------------
- * This class is used for:
- * 用户获取服务端的省市县数据，负责与服务端的交互
+ * 工具类：获取服务端的省市县数据，负责与服务端的交互
  */
-
-
 
 public class HttpUtil {
     public static void sendOkHttpRequest(String address, okhttp3.Callback callback){

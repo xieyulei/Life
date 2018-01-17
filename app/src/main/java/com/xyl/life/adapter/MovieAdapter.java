@@ -18,35 +18,34 @@ import com.xyl.life.entity.movie.Movie;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/12.
- * ---------------------------
- * This class is used for:
+ * 电影页面适配器
  */
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private Context mContext;
-    private List<Movie> mList=new ArrayList<>();
-    public MovieAdapter(Context context, List<Movie> list){
-        this.mContext=context;
-        this.mList=list;
+    private List<Movie> mList = new ArrayList<>();
+
+    public MovieAdapter(Context context, List<Movie> list) {
+        this.mContext = context;
+        this.mList = list;
     }
+
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(mContext).inflate(R.layout.item_movie,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_movie, parent, false);
         return new MovieViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
-        Movie movie=mList.get(position);
+        Movie movie = mList.get(position);
         holder.mName.setText(movie.getTitle());
         holder.mInfo.setText(GetInfo(movie.getCasts()));
-        holder.mTime.setText(GetTime(movie.getYear(),movie.getGenres()));
-        float v=movie.getRating().getAverage();
+        holder.mTime.setText(GetTime(movie.getYear(), movie.getGenres()));
+        float v = movie.getRating().getAverage();
         Log.e("getRating", String.valueOf(v));
         holder.mRating.setRating(v);
         holder.mAverage.setText(String.valueOf(v));
@@ -54,16 +53,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     }
 
-    private static String GetInfo(Casts[] casts){
-        StringBuilder builder=new StringBuilder();
-        for (Casts c: casts) {
+    private static String GetInfo(Casts[] casts) {
+        StringBuilder builder = new StringBuilder();
+        for (Casts c : casts) {
             builder.append(c.getName()).append(" ");
         }
         return builder.toString();
     }
 
-    private static String GetTime(String time,String[] country){
-        return time+" / "+country[0];
+    private static String GetTime(String time, String[] country) {
+        return time + " / " + country[0];
     }
 
     @Override
@@ -80,15 +79,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         public TextView mTime;
         public AppCompatRatingBar mRating;
         public TextView mAverage;
-        public MovieViewHolder(View view){
+
+        public MovieViewHolder(View view) {
             super(view);
-            mCover=view.findViewById(R.id.iv_movie_cover);
-            mName=view.findViewById(R.id.tv_movie_name);
-            mInfo=view.findViewById(R.id.tv_movie_info);
-            mTime=view.findViewById(R.id.tv_movie_time);
-            mRating=view.findViewById(R.id.rb_movie_rating);
+            mCover = view.findViewById(R.id.iv_movie_cover);
+            mName = view.findViewById(R.id.tv_movie_name);
+            mInfo = view.findViewById(R.id.tv_movie_info);
+            mTime = view.findViewById(R.id.tv_movie_time);
+            mRating = view.findViewById(R.id.rb_movie_rating);
             mRating.setNumStars(10);
-            mAverage=view.findViewById(R.id.tv_movie_rating);
+            mAverage = view.findViewById(R.id.tv_movie_rating);
         }
     }
 }

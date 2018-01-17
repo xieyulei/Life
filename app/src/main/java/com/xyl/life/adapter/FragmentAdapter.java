@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/15.
- * ---------------------------
- * This class is used for:
+ * 首页中间viewPager中三个fragment的显示适配器
  */
 
 public class FragmentAdapter extends FragmentPagerAdapter {

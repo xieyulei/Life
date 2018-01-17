@@ -5,11 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/9.
- * ---------------------------
- * This class is used for:
  * 总的实体类：用来引用刚刚创建的各个实体类
  */
 

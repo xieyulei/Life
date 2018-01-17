@@ -13,12 +13,6 @@ import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.view.animation.Animation;
 
-/*******************************
- * Created by liuqiang          *
- *******************************
- * data: 2018/1/10               *
- *******************************/
-
 @SuppressLint("ViewConstructor")
         // Suppress lint: this class will not be used in xml
 class CircleImageView extends android.support.v7.widget.AppCompatImageView {

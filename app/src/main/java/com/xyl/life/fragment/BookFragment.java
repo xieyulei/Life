@@ -29,12 +29,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/15.
- * ---------------------------
- * This class is used for:
+ * 用于显示图书的Fragment
  */
 
 public class BookFragment extends BaseFragment {

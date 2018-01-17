@@ -8,24 +8,14 @@ import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.xyl.life.R;
 
+
 /**
- * -------------------------
- * Author：doraemon
- * Created by xyl on 2018/1/11.
- * ---------------------------
- * This class is used for:
+ * 首页上方图片加载适配器
  */
 
 public class ImageLoopAdapter extends LoopPagerAdapter {
 
-
-    int[] imgs = new int[]{
-            R.drawable.img1,
-            R.drawable.img2,
-            R.drawable.img3,
-            R.drawable.img4,
-            R.drawable.img5,
-    };
+    int[] imgs = new int[]{R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4, R.drawable.img5};//放置首页上方viewPager要展示的图片
 
     public ImageLoopAdapter(RollPagerView viewPager) {
         super(viewPager);

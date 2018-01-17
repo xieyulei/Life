@@ -9,12 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
 import android.view.View;
 
-/*******************************
- * Created by liuqiang          *
- *******************************
- * data: 2018/1/4               *
- *******************************/
-
 public class GravitySnapHelper extends SnapHelper {
     private int mGravity;
     @Nullable
