@@ -67,7 +67,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent =new Intent(mContext, BookInfoActivity.class);
                 intent.putExtra("book",bookItem);
                 mContext.startActivity(intent);
-
             }
         });
     }

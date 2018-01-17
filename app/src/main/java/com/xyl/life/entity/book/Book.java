@@ -200,7 +200,7 @@ public class Book implements Serializable {
         this.pages = pages;
     }
 
-    public String getAuthor_into() {
+    public String getAuthor_intro() {
         return author_intro;
     }
 
