@@ -1,10 +1,12 @@
 package com.xyl.life.entity.movie;
 
+import java.io.Serializable;
+
 /**
  * 实体类：影片评分：包含四个参数：最低、最高、平均、获得星级
  */
 
-public class Rating {
+public class Rating implements Serializable {
     private String id;
     private int min;
     private int max;

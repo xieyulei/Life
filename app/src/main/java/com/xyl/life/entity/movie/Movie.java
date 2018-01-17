@@ -1,10 +1,12 @@
 package com.xyl.life.entity.movie;
 
+import java.io.Serializable;
+
 /**
  * 实体类：定义从豆瓣api获取到Json文件相关参数的数据类型
  */
 
-public class Movie {
+public class Movie implements Serializable {
 
     private Rating rating ;//评分
     private long reviews_count;//影评数量

@@ -1,21 +1,16 @@
 package com.xyl.life.entity.movie;
 
+import java.io.Serializable;
+
 /**
  * 实体类：导演，包含四个属性：影人条目id，中文名，影人条目URL，影人头像
  */
 
-public class Casts {
+public  class Casts implements Serializable {
     private String alt;
     private Images avatars;
     private String name;
     private String id;
-
-    public Casts(String alt, Images avatars, String name, String id) {
-        this.alt = alt;
-        this.avatars = avatars;
-        this.name = name;
-        this.id = id;
-    }
 
     public String getAlt() {
         return alt;
@@ -49,4 +44,3 @@ public class Casts {
         this.id = id;
     }
 }
-

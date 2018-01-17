@@ -23,6 +23,7 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
+            android:transitionName="@string/share_element_movie"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView

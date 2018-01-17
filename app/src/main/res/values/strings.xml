@@ -11,5 +11,10 @@
     <string name="guide_skip">SKIP</string>
     <string name="guide_done">DONE</string>
 
+    <string name="base_movie_url">https://api.douban.com/v2/</string>
+
+    <string name="share_element_book">element_book</string>
+    <string name="share_element_music">element_music</string>
+    <string name="share_element_movie">element_movie</string>
 
 </resources>

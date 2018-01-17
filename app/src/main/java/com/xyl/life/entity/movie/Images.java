@@ -1,5 +1,8 @@
 package com.xyl.life.entity.movie;
 
+
+import java.io.Serializable;
+
 /**
  * 实体类：电影海报图，分别提供大中小三个尺寸的海报
  * 大：288px 乘以 465px
@@ -7,7 +10,7 @@ package com.xyl.life.entity.movie;
  * 小：64px 乘以 103px
  */
 
-public class Images {
+public class Images implements Serializable {
     private String id;
     private String small;
     private String medium;

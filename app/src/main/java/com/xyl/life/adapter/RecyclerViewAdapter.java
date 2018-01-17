@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.xyl.life.R;
-import com.xyl.life.activity.BookInfoActivity;
+import com.xyl.life.activity.BookDetailActivity;
 import com.xyl.life.entity.book.Book;
 import com.xyl.life.entity.book.BookItem;
 
@@ -64,7 +64,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View view) {
                 int position =holder.getAdapterPosition();
                 Book bookItem =mBookItemList.get(position);
-                Intent intent =new Intent(mContext, BookInfoActivity.class);
+                Intent intent =new Intent(mContext, BookDetailActivity.class);
                 intent.putExtra("book",bookItem);
                 mContext.startActivity(intent);
             }

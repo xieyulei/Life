@@ -38,14 +38,24 @@ public class BookFragment extends BaseFragment {
 
     private String[] urls = {
             "https://api.douban.com/v2/book/isbn/9787115439789",
-            "https://api.douban.com/v2/book/isbn/9787302470069",
+            "https://api.douban.com/v2/book/isbn/9787302315582",
             "https://api.douban.com/v2/book/isbn/9787115457592",
+
             "https://api.douban.com/v2/book/isbn/9787121267734",
             "https://api.douban.com/v2/book/isbn/9787121296024",
             "https://api.douban.com/v2/book/isbn/9787115385703",
+
             "https://api.douban.com/v2/book/isbn/9787121269394",
             "https://api.douban.com/v2/book/isbn/9787115461230",
-            "https://api.douban.com/v2/book/isbn/9787512393981"
+            "https://api.douban.com/v2/book/isbn/9787512393981",
+
+            "https://api.douban.com/v2/book/isbn/9787111539582",
+            "https://api.douban.com/v2/book/isbn/9787121275470",
+            "https://api.douban.com/v2/book/isbn/9787302470069",
+
+            "https://api.douban.com/v2/book/isbn/9787115213945",
+            "https://api.douban.com/v2/book/isbn/9781430226598",
+            "https://api.douban.com/v2/book/isbn/9787115362865"
     };
 
     private String[] urls_native = {
@@ -86,7 +96,7 @@ public class BookFragment extends BaseFragment {
             @Override
             public void onItemClick(int position) {
                 int index = position;
-                Intent intent=new Intent(Intent.ACTION_VIEW);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(urls_native[position]));
                 startActivity(intent);
             }
@@ -126,7 +136,7 @@ public class BookFragment extends BaseFragment {
 
     private void parseJSONWithGSON(String jsonData, View recyclerView) {
         Gson gson = new Gson();
-       Book book = gson.fromJson(jsonData, Book.class);
+        Book book = gson.fromJson(jsonData, Book.class);
         //BookItem item = new BookItem(book.getTitle(), book.getImages().getSmall());
         list.add(book);
         recyclerView.post(new Runnable() {

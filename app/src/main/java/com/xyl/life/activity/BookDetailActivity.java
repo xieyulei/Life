@@ -27,7 +27,7 @@ import java.util.List;
  * 用于展示相关图书详情信息
  */
 
-public class BookInfoActivity extends AppCompatActivity {
+public class BookDetailActivity extends AppCompatActivity {
 
     private ImageView mIvBook;
     private TextView mTvBookTitle; //title图书名称
@@ -93,7 +93,7 @@ public class BookInfoActivity extends AppCompatActivity {
 //                        palette.getDarkMutedColor(ContextCompat.getColor(BookInfoActivity.this,R.color.colorPrimaryDark)));
 
                 collapsingToolbarLayout.setBackgroundColor(//获取柔和颜色中的亮颜色
-                        palette.getLightMutedColor(ContextCompat.getColor(BookInfoActivity.this, android.R.color.transparent)));
+                        palette.getLightMutedColor(ContextCompat.getColor(BookDetailActivity.this, android.R.color.transparent)));
 
 //                collapsingToolbarLayout.setBackgroundColor(//获取鲜艳颜色中的亮颜色
 //                        palette.getLightVibrantColor(ContextCompat.getColor(BookInfoActivity.this,android.R.color.transparent)));

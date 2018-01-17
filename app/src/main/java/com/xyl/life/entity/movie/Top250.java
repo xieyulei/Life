@@ -1,11 +1,13 @@
 package com.xyl.life.entity.movie;
 
+import java.io.Serializable;
+
 /**
  *
  * 实体类：影片Top250
  */
 
-public class Top250 {
+public class Top250 implements Serializable {
     private int count;
     private int start;
     private int total;//总数

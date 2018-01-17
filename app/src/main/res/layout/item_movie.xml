@@ -21,6 +21,7 @@
             android:layout_width="80dp"
             android:layout_height="100dp"
             android:layout_marginStart="24dp"
+            android:transitionName="@string/share_element_movie"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>

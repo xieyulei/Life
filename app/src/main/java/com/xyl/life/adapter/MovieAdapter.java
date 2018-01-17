@@ -19,50 +19,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * 电影页面适配器
- */
-
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private Context mContext;
-    private List<Movie> mList = new ArrayList<>();
-
-    public MovieAdapter(Context context, List<Movie> list) {
-        this.mContext = context;
-        this.mList = list;
+    private List<Movie> mList=new ArrayList<>();
+    private OnItemClickListener mListener;
+    public MovieAdapter(Context context, List<Movie> list){
+        this.mContext=context;
+        this.mList=list;
     }
-
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_movie, parent, false);
+        View view= LayoutInflater.from(mContext).inflate(R.layout.item_movie,parent,false);
         return new MovieViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(MovieViewHolder holder, int position) {
-        Movie movie = mList.get(position);
+    public void onBindViewHolder(MovieViewHolder holder, final int position) {
+        final Movie movie=mList.get(position);
         holder.mName.setText(movie.getTitle());
         holder.mInfo.setText(GetInfo(movie.getCasts()));
-        holder.mTime.setText(GetTime(movie.getYear(), movie.getGenres()));
-        float v = movie.getRating().getAverage();
+        holder.mTime.setText(GetTime(movie.getYear(),movie.getGenres()));
+        float v=movie.getRating().getAverage();
         Log.e("getRating", String.valueOf(v));
         holder.mRating.setRating(v);
         holder.mAverage.setText(String.valueOf(v));
-        Glide.with(mContext).load(movie.getImages().getSmall()).into(holder.mCover);
+       Glide.with(mContext).load(movie.getImages().getSmall()).into(holder.mCover);
+       holder.mParentView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               mListener.onClick(v,position,movie);
+           }
+       });
 
     }
 
-    private static String GetInfo(Casts[] casts) {
-        StringBuilder builder = new StringBuilder();
-        for (Casts c : casts) {
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener=listener;
+    }
+
+    private static String GetInfo(Casts[] casts){
+        StringBuilder builder=new StringBuilder();
+        for (Casts c: casts) {
             builder.append(c.getName()).append(" ");
         }
         return builder.toString();
     }
 
-    private static String GetTime(String time, String[] country) {
-        return time + " / " + country[0];
+    private static String GetTime(String time,String[] country){
+        return time+" / "+country[0];
     }
 
     @Override
@@ -79,16 +84,23 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         public TextView mTime;
         public AppCompatRatingBar mRating;
         public TextView mAverage;
-
-        public MovieViewHolder(View view) {
+        public View mParentView;
+        public MovieViewHolder(View view){
             super(view);
-            mCover = view.findViewById(R.id.iv_movie_cover);
-            mName = view.findViewById(R.id.tv_movie_name);
-            mInfo = view.findViewById(R.id.tv_movie_info);
-            mTime = view.findViewById(R.id.tv_movie_time);
-            mRating = view.findViewById(R.id.rb_movie_rating);
+            mParentView=view;
+            mCover=view.findViewById(R.id.iv_movie_cover);
+            mName=view.findViewById(R.id.tv_movie_name);
+            mInfo=view.findViewById(R.id.tv_movie_info);
+            mTime=view.findViewById(R.id.tv_movie_time);
+            mRating=view.findViewById(R.id.rb_movie_rating);
             mRating.setNumStars(10);
-            mAverage = view.findViewById(R.id.tv_movie_rating);
+            mAverage=view.findViewById(R.id.tv_movie_rating);
+
+
         }
+    }
+
+    public interface OnItemClickListener{
+        void onClick(View view, int position, Movie movie);
     }
 }
