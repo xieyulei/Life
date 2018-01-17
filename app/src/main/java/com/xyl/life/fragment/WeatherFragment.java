@@ -2,6 +2,7 @@ package com.xyl.life.fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
@@ -61,7 +62,6 @@ public class WeatherFragment extends BaseFragment {
     @Override
     protected void initView(LayoutInflater inflater, View view, Bundle savedInstanceState) {
 
-
         weatherLayout = (ScrollView) view.findViewById(R.id.weather_layout);
         titleCity = (TextView) view.findViewById(R.id.title_city);
         titleUpdateTime = (TextView) view.findViewById(R.id.title_update_time);
@@ -92,7 +92,6 @@ public class WeatherFragment extends BaseFragment {
                 dialog.setOn(new CustomDialog.OnSelectedListener() {
                     @Override
                     public void onSelected(String id) {
-
                         requestWeather(id);
                     }
                 });
@@ -182,7 +181,8 @@ public class WeatherFragment extends BaseFragment {
         String weatherInfo = weather.now.more.info;
 
         titleCity.setText(cityName);
-        titleUpdateTime.setText(updateTime);
+        //titleUpdateTime.setText("Last update:"+"\n"+ updateTime);
+        titleUpdateTime.setText("Last update："+ updateTime);
         degreeText.setText(degree);
         weatherInfoText.setText(weatherInfo);
 
