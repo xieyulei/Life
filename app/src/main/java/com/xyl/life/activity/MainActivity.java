@@ -1,5 +1,6 @@
 package com.xyl.life.activity;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ import com.xyl.life.fragment.WeatherFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -34,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;//首页中间的viewPager
     private FragmentPagerAdapter mFragmentAdapter;
     private List<Fragment> mFragmentList = new ArrayList<>();//声明存放fragment的集合
+
+    private Context context;   //上下文对象
+
+    private boolean quit = false; //设置退出的标识
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,4 +152,25 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
+//    @Override
+//    public void onBackPressed() {
+//
+//        if (quit == false){     //询问退出程序
+//            Toast.makeText(context, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+//            new Timer(true).schedule(new TimerTask() {      //启动定时任务
+//                @Override
+//                public void run() {
+//                    quit = false;   //重置退出标识
+//                }
+//            } , 2000);  //延时２秒执行
+//            quit = true;
+//        }else {     //确认退出程序
+//            super.onBackPressed();
+//            finish();
+//        }
+//    }
+
+
 }

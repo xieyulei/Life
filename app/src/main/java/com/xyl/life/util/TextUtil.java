@@ -7,12 +7,6 @@ import android.text.style.LeadingMarginSpan;
 import java.util.ArrayList;
 import java.util.List;
 
-/*******************************
- * Created by liuqiang          *
- *******************************
- * data: 2018/1/12               *
- *******************************/
-
 public class TextUtil {
 
     public static SpannableString firstLineIndent(String s,int length){
