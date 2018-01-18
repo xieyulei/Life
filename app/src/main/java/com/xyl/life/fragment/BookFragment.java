@@ -5,21 +5,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.xyl.life.R;
 import com.xyl.life.adapter.ImageLoopAdapter;
-import com.xyl.life.adapter.RecyclerViewAdapter;
+import com.xyl.life.adapter.BookRecyclerViewAdapter;
 import com.xyl.life.entity.book.Book;
-import com.xyl.life.entity.book.BookItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -66,7 +63,7 @@ public class BookFragment extends BaseFragment {
             "http://baby.dangdang.com/20180109_cyto"
     };
     private List<Book> list;
-    private RecyclerViewAdapter adapter;
+    private BookRecyclerViewAdapter adapter;
     private RollPagerView mBookViewPager;
 
     @Override
@@ -85,9 +82,10 @@ public class BookFragment extends BaseFragment {
         recyclerView.setLayoutManager(layoutManager);
         list = new ArrayList<>();
 
-        adapter = new RecyclerViewAdapter(getContext(), list);
+        adapter = new BookRecyclerViewAdapter(getContext(), list);
         recyclerView.setAdapter(adapter);
 
+        //图书页面上方相关信息展示
         mBookViewPager = (RollPagerView) view.findViewById(R.id.view_pager_bookFragment);
         mBookViewPager.setAdapter(new ImageLoopAdapter(mBookViewPager));
 

@@ -40,8 +40,8 @@ public class SplashActivity extends AppCompatActivity {
                 public void run() {
                     startActivity(new Intent(SplashActivity.this, GuideActivity.class));
                     finish();
-                    //  editor.putBoolean("guide", true);//设置为true，每次都会进入启动页，设置为false，第一次打开会进入启动页，之后则不会
-                    editor.putBoolean("guide", false);
+                    editor.putBoolean("guide", true);//设置为true，每次都会进入启动页，设置为false，第一次打开会进入启动页，之后则不会
+                   // editor.putBoolean("guide", false);
                     editor.commit();
                 }
             }, 1000);

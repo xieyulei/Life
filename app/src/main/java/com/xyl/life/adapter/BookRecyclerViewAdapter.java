@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide;
 import com.xyl.life.R;
 import com.xyl.life.activity.BookDetailActivity;
 import com.xyl.life.entity.book.Book;
-import com.xyl.life.entity.book.BookItem;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ import java.util.List;
  * 首页书籍展示适配器
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class BookRecyclerViewAdapter extends RecyclerView.Adapter<BookRecyclerViewAdapter.ViewHolder> {
 
     private List<Book> mBookItemList;
     private Context mContext;
@@ -43,7 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public RecyclerViewAdapter(Context context, List<Book> list) {
+    public BookRecyclerViewAdapter(Context context, List<Book> list) {
         this.mContext = context;
         this.mBookItemList = list;
     }
