@@ -17,9 +17,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.xyl.life.R;
-import com.xyl.life.db.City;
-import com.xyl.life.db.County;
-import com.xyl.life.db.Province;
+import com.xyl.life.entity.weather.City;
+import com.xyl.life.entity.weather.County;
+import com.xyl.life.entity.weather.Province;
 
 import org.litepal.crud.DataSupport;
 

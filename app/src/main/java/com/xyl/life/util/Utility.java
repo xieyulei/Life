@@ -3,9 +3,9 @@ package com.xyl.life.util;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.xyl.life.db.City;
-import com.xyl.life.db.County;
-import com.xyl.life.db.Province;
+import com.xyl.life.entity.weather.City;
+import com.xyl.life.entity.weather.County;
+import com.xyl.life.entity.weather.Province;
 import com.xyl.life.entity.weather.Weather;
 
 import org.json.JSONArray;

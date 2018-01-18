@@ -3,9 +3,9 @@
     <version value="1"/>
 
     <list>
-        <mapping class="com.xyl.life.db.Province"/>
-        <mapping class="com.xyl.life.db.City"/>
-        <mapping class="com.xyl.life.db.County"/>
+        <mapping class="com.xyl.life.entity.weather.Province"/>
+        <mapping class="com.xyl.life.entity.weather.City"/>
+        <mapping class="com.xyl.life.entity.weather.County"/>
 
     </list>
 

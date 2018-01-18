@@ -1,4 +1,4 @@
-package com.xyl.life.view;
+package com.xyl.life.util.customView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

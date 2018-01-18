@@ -1,4 +1,4 @@
-package com.xyl.life.view;
+package com.xyl.life.util.customView;
 
 import android.graphics.PointF;
 import android.support.annotation.NonNull;

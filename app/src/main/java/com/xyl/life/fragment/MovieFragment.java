@@ -17,9 +17,8 @@ import com.xyl.life.R;
 import com.xyl.life.activity.MovieDetailActivity;
 import com.xyl.life.adapter.MovieAdapter;
 import com.xyl.life.entity.movie.Movie;
-import com.xyl.life.entity.movie.SimpleMovie;
 import com.xyl.life.entity.movie.Top250;
-import com.xyl.life.view.SwipeRefreshLayoutEx;
+import com.xyl.life.util.customView.SwipeRefreshLayoutEx;
 
 import java.util.ArrayList;
 import java.util.Arrays;

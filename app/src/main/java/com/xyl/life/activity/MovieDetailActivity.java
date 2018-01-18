@@ -25,7 +25,7 @@ import com.xyl.life.adapter.CastAdapter;
 import com.xyl.life.entity.movie.Casts;
 import com.xyl.life.entity.movie.Movie;
 import com.xyl.life.util.TextUtil;
-import com.xyl.life.view.GravitySnapHelper;
+import com.xyl.life.util.customView.GravitySnapHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;

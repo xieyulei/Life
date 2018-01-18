@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.GuideActivity"/>
-        <activity android:name=".activity.BookDetailActivity"/>
-        <activity android:name=".activity.MovieDetailActivity"/>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.GuideActivity" />
+        <activity android:name=".activity.BookDetailActivity" />
+        <activity android:name=".activity.MovieDetailActivity" />
 
         <service
             android:name=".service.AutoUpdateService"

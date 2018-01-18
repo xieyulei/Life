@@ -1,4 +1,4 @@
-package com.xyl.life.db;
+package com.xyl.life.entity.weather;
 
 import org.litepal.crud.DataSupport;
 
