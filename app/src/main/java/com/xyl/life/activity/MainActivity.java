@@ -4,17 +4,17 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 import com.xyl.life.R;
 import com.xyl.life.adapter.FragmentAdapter;
 import com.xyl.life.fragment.BookFragment;
@@ -23,8 +23,6 @@ import com.xyl.life.fragment.WeatherFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 /**
@@ -33,7 +31,11 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
     private long exitTime = 0;
-    private BottomNavigationView mNavigationView;//底部导航
+
+    //private BottomNavigationView mNavigationView;//底部导航
+    //底部控件初始化
+    private BottomBar mBottomBar;
+
     private ViewPager mViewPager;//首页中间的viewPager
     private FragmentPagerAdapter mFragmentAdapter;
     private List<Fragment> mFragmentList = new ArrayList<>();//声明存放fragment的集合
@@ -49,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);//隐藏状态栏
 
-        if(Build.VERSION.SDK_INT >= 21){
-            View decorView =getWindow().getDecorView();
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
             decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
@@ -64,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
      * 初始化MainActivity页面控件
      */
     public void initView() {
-        mNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        mBottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        // mNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
         BookFragment bookFragment = new BookFragment();
@@ -83,10 +86,15 @@ public class MainActivity extends AppCompatActivity {
      * 控件的事件监听
      */
     public void initListener() {
-        mNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        /**
+         * 添加事件监听，当点击条目时，会将页面设置对应的文字
+         */
+
+        mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
+            public void onTabSelected(int tabId) {
+                switch (tabId) {
                     case R.id.nav_book:
                         mViewPager.setCurrentItem(0, true);
 
@@ -100,9 +108,12 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                 }
-                return true;
             }
         });
+
+        /**
+         * 添加事件监听，如果点击就弹出toast提示
+         */
 
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(mFragmentAdapter);
@@ -117,12 +128,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 if (position == 0) {
-                    mNavigationView.setSelectedItemId(R.id.nav_book);
+                    mBottomBar.setDefaultTab(R.id.nav_book);
 
                 } else if (position == 1) {
-                    mNavigationView.setSelectedItemId(R.id.nav_movie);
-                } else {
-                    mNavigationView.setSelectedItemId(R.id.nav_weather);
+                    mBottomBar.setDefaultTab(R.id.nav_movie);
+
+                } else if(position ==2){
+                    mBottomBar.setDefaultTab(R.id.nav_weather);
                 }
             }
 

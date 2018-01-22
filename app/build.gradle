@@ -43,4 +43,6 @@ dependencies {
     //    compile project(path: ':libzxing')
     //    implementation project(':libzxing')
     implementation 'com.android.support:palette-v7:27.0.2'
+
+    implementation 'com.roughike:bottom-bar:2.3.1'
 }

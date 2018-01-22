@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+
+    <tab
+        id="@+id/nav_book"
+        icon="@mipmap/book"
+        title="@string/nav_book_text" />
+
+    <tab
+        id="@+id/nav_movie"
+        icon="@mipmap/movie"
+        title="@string/nav_movie_text" />
+
+    <tab
+        id="@+id/nav_weather"
+        icon="@mipmap/weather"
+        title="@string/nav_weather_text" />
+
+</tabs>
