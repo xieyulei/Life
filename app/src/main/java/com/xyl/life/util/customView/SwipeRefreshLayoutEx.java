@@ -33,6 +33,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
 import android.widget.AbsListView;
 
+import com.xyl.life.R;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -575,7 +577,7 @@ public class SwipeRefreshLayoutEx extends ViewGroup implements NestedScrollingPa
         for (int i = 0; i < colorResIds.length; i++) {
             colorRes[i] = ContextCompat.getColor(getContext(), colorResIds[i]);
         }
-        setColorSchemeColors(colorRes);
+       setColorSchemeColors(colorRes);
     }
 
     /**

@@ -101,7 +101,7 @@ public class WeatherFragment extends BaseFragment {
         });
 
         swipeRefresh.setRefreshing(false);
-        swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefresh.setColorSchemeResources(R.color.weather_refresh_progress);
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
