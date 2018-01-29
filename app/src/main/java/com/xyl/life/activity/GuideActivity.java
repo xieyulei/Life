@@ -24,6 +24,7 @@ import java.util.List;
 
 /**
  * APP引导页
+ * 此页面主题是由ViewPager构成，通过页面滑动配合底部小圆点，实现引导页滑动的效果
  */
 public class GuideActivity extends Activity implements View.OnClickListener {
 
@@ -42,8 +43,8 @@ public class GuideActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-     //   getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        // getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);//设置底部导航透明
        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);//设置引导页面全屏显示
 
         setContentView(R.layout.activity_guide);//在onCreate（）方法中引入引导页的布局文件
@@ -51,7 +52,7 @@ public class GuideActivity extends Activity implements View.OnClickListener {
 
         mSp = getSharedPreferences("config", MODE_PRIVATE);
 
-        initView();
+        initView();//初始化控件
 
         //准备要展示的图片集合
         mImageList = new ArrayList<>();
@@ -78,6 +79,7 @@ public class GuideActivity extends Activity implements View.OnClickListener {
             mPointGroup.addView(point);
         }
 
+        //使用适配器，显示引导页面，显示内容为图片集合
         GuideAdapter adapter = new GuideAdapter(mImageList);
         mViewPager.setAdapter(adapter);
 
