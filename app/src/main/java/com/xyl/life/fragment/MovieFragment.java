@@ -61,7 +61,7 @@ public class MovieFragment extends BaseFragment implements SwipeRefreshLayoutEx.
         mRefreshLayout.setPullPosition(Gravity.BOTTOM);
         mRefreshLayout.setRefreshDrawableStyle(SwipeRefreshLayoutEx.ARROW);
         mRefreshLayout.setOnRefreshListener(this);
-
+        mRefreshLayout.setColorSchemeResources(R.color.movie_refresh_progress);
         adapter = new MovieAdapter(getContext(), list);
         adapter.setOnItemClickListener(this);
         retrofit = new Retrofit.Builder()
@@ -100,8 +100,9 @@ public class MovieFragment extends BaseFragment implements SwipeRefreshLayoutEx.
     }
 
     private void getData() {
-        final ProgressDialog dialog = new ProgressDialog(getActivity());
-        dialog.show();
+      //  final ProgressDialog dialog = new ProgressDialog(getActivity(),R.style.movie_progress_style);
+        //final ProgressDialog dialog = new ProgressDialog(getActivity(),R.style.movie_progress_style);
+       // dialog.show();
         movie.response(0, 10)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -122,7 +123,7 @@ public class MovieFragment extends BaseFragment implements SwipeRefreshLayoutEx.
                     @Override
                     public void onError(Throwable e) {
                         Log.e("onError", e.getMessage());
-                        dialog.dismiss();
+                        //dialog.dismiss();
                         mRefreshLayout.setRefreshing(false);
                     }
 
@@ -130,7 +131,7 @@ public class MovieFragment extends BaseFragment implements SwipeRefreshLayoutEx.
                     public void onComplete() {
                         start += COUNT;
                         mRefreshLayout.setRefreshing(false);
-                        dialog.dismiss();
+                      //  dialog.dismiss();
                     }
                 });
 
