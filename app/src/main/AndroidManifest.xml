@@ -13,6 +13,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.SplashActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:alwaysRetainTaskState="true"
             android:theme="@style/splash_style">
             <intent-filter>
@@ -22,11 +24,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            />
         <activity android:name=".activity.GuideActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:theme="@style/guide_style"/>
-        <activity android:name=".activity.BookDetailActivity" />
-        <activity android:name=".activity.MovieDetailActivity" />
+        <activity android:name=".activity.BookDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MovieDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
 
         <service
             android:name=".service.AutoUpdateService"
